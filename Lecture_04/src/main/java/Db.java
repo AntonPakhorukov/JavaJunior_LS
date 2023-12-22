@@ -16,7 +16,7 @@ public class Db {
     // Создаем пользователя
     private static final String USER = "root";
     // Указываем пароль
-    private static final String PASSWORD = "NewLinux23";
+    private static final String PASSWORD = "password";
 
     public static void con() {
         /**
@@ -25,9 +25,11 @@ public class Db {
          */
         try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD)) {
             Statement statement = con.createStatement();
-            statement.execute("DROP SCHEMA testJava");
-            statement.execute("CREATE SCHEMA testJava");
-            statement.execute("CREATE TABLE testJava.tableJava (id INT NOT NULL, firstname VARCHAR(45) NULL, lastname VARCHAR(45) NULL, PRIMARY KEY(id));");
+            statement.execute("DROP SCHEMA TestJava;");
+            statement.execute("CREATE SCHEMA TestJava;");
+            statement.execute("CREATE TABLE TestJava.tableJava " +
+                    "(id INT NOT NULL, firstname VARCHAR(45) NULL, " +
+                    "lastname VARCHAR(45) NULL, PRIMARY KEY(id));");
 
         } catch (SQLException e){
             e.printStackTrace();
